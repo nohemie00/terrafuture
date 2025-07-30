@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const BusinessAreas = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true); // 바로 보이도록 true로 설정
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,7 +50,7 @@ const BusinessAreas = () => {
       
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <div className={`text-center mb-20 fade-in ${isVisible ? 'visible' : ''}`}>
+        <div className="text-center mb-20">
           <h2 className="text-display font-tech font-bold text-white mb-6">
             BUSINESS
             <span className="text-pink block">AREAS</span>
@@ -66,18 +66,19 @@ const BusinessAreas = () => {
           {businessAreas.map((area, index) => (
             <div
               key={index}
-              className={`card-modern p-8 hover-lift fade-in ${isVisible ? 'visible' : ''}`}
-              style={{ animationDelay: area.delay }}
+              className="p-8 hover-lift rounded-lg transition-all duration-300 border hover:border-pink"
+              style={{ 
+                backgroundColor: '#1a1a1a', 
+                borderColor: '#333333'
+              }}
             >
-
-
               {/* Title */}
               <h3 className="text-2xl font-tech font-bold text-white mb-4 text-center">
                 {area.title}
               </h3>
 
               {/* Description */}
-              <p className="text-secondary leading-relaxed text-center mb-6">
+              <p className="text-white leading-relaxed text-center mb-6">
                 {area.description}
               </p>
 
@@ -88,7 +89,7 @@ const BusinessAreas = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className={`text-center mt-16 fade-in ${isVisible ? 'visible' : ''}`} style={{ animationDelay: '0.6s' }}>
+        <div className="text-center mt-16">
           <button className="btn-modern">
             상세 서비스 보기
           </button>
