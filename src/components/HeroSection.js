@@ -9,26 +9,41 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center bg-black overflow-hidden">
-      {/* Video Background Placeholder (동영상 자리) */}
-      <div className="absolute inset-0 bg-gradient-overlay">
-        <div className="absolute inset-0 grid-overlay opacity-30"></div>
-        {/* 실제 동영상을 여기에 넣을 수 있습니다 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-transparent to-black opacity-60"></div>
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+          <source src="/hero.webm" type="video/webm" />
+          <source src="/hero.mov" type="video/quicktime" />
+          {/* 영상이 로드되지 않을 경우 대체 배경 */}
+        </video>
         
-        {/* Animated particles effect */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-pink rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${3 + Math.random() * 3}s`
-              }}
-            ></div>
-          ))}
+        {/* Video Overlay */}
+        <div className="absolute inset-0 video-overlay">
+          <div className="absolute inset-0 grid-overlay opacity-30"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/60"></div>
+          
+          {/* Animated particles effect */}
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-pink rounded-full animate-float"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${3 + Math.random() * 3}s`
+                }}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -42,14 +57,14 @@ const HeroSection = () => {
             </h1>
             
             {/* Subtitle */}
-            <p className="text-2xl md:text-3xl font-primary font-light text-secondary tracking-wide leading-relaxed">
+            <p className="text-xl md:text-2xl font-primary font-light text-secondary tracking-wide leading-relaxed">
               몰입을 설계하는 AX 솔루션 그룹
             </p>
           </div>
           
           {/* Description */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-lg md:text-xl font-light text-accent tracking-wide leading-relaxed">
+            <p className="text-lg md:text-xl font-light text-white tracking-wide leading-relaxed">
               AI 기반 인터랙티브 콘텐츠 • AR/VR 메타버스 • 몰입형 전시 공간 설계
             </p>
           </div>
@@ -91,26 +106,7 @@ const HeroSection = () => {
         <div className="w-px h-12 bg-pink mx-auto animate-pulse glow-pink"></div>
       </div>
 
-      {/* Top Navigation */}
-      <nav className="App-nav">
-        <div className="container-custom">
-          <div className="flex justify-center items-center py-6">
-            <div className="hidden md:flex space-x-8">
-              {[
-                { name: 'HOME', link: '#' },
-                { name: 'ABOUT', link: '#' },
-                { name: 'BUSINESS', link: '#business-areas' },
-                { name: 'PROJECTS', link: '#project-references' },
-                { name: 'CONTACT', link: '#contact' }
-              ].map((item) => (
-                <a key={item.name} href={item.link} className="nav-link font-tech text-sm tracking-wider">
-                  {item.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </nav>
+
     </section>
   );
 };
