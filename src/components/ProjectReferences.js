@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const ProjectReferences = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -41,7 +41,7 @@ const ProjectReferences = () => {
       delay: "0.2s"
     },
     {
-      title: "IP 인터렉티브 음성 대화 시스템",
+      title: "IP 반응형 대화 시스템",
       description: "캐릭터 IP와 실시간 음성 상호작용 솔루션",
       category: "AI VOICE",
       image: "🎤",
@@ -104,7 +104,7 @@ const ProjectReferences = () => {
                   <h3 className="text-xl font-tech font-bold text-white mb-3 group-hover:text-pink transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-secondary leading-relaxed text-sm">
+                  <p className="text-white leading-relaxed text-sm">
                     {project.description}
                   </p>
                 </div>
